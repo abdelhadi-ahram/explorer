@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unused_element, prefer_const_constructors_in_immutables, prefer_const_literals_to_create_immutables, sort_child_properties_last, sized_box_for_whitespace, deprecated_member_use
 
+import 'package:explorer/screens/add_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
@@ -25,25 +26,28 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: [
           Expanded(
-              child: FlutterMap(
-            options: const MapOptions(
-              initialCenter: LatLng(51.509364, -0.128928),
-              initialZoom: 9.2,
-            ),
-            children: [
-              TileLayer(
-                urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                userAgentPackageName: 'com.explorer.app',
-              ),
-              const RichAttributionWidget(
-                attributions: [
-                  TextSourceAttribution(
-                    'OpenStreetMap contributors',
-                  ),
-                ],
-              ),
-            ],
-          )),
+              child: index == 0
+                  ? FlutterMap(
+                      options: const MapOptions(
+                        initialCenter: LatLng(51.509364, -0.128928),
+                        initialZoom: 9.2,
+                      ),
+                      children: [
+                        TileLayer(
+                          urlTemplate:
+                              'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                          userAgentPackageName: 'com.explorer.app',
+                        ),
+                        const RichAttributionWidget(
+                          attributions: [
+                            TextSourceAttribution(
+                              'OpenStreetMap contributors',
+                            ),
+                          ],
+                        ),
+                      ],
+                    )
+                  : AddImage()),
           Container(
             height: 70 + MediaQuery.of(context).padding.bottom,
             decoration: BoxDecoration(
